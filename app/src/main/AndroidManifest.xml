@@ -10,16 +10,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.gms.API_KEY"
             android:value="AIzaSyBR7CXvC8-BK5MqrFfxT_f0N8Fb00qCxHk" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".SplashActivity">
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,7 +26,7 @@
         </activity>
 
         <receiver
-            android:name=".MyBroadcastReceiver"
+            android:name=".broadcastreceiver.MyBroadcastReceiver"
             android:enabled="true"
             android:exported="true"
             android:permission="com.google.android.c2dm.permission.SEND">
@@ -41,10 +39,11 @@
         </receiver>
 
         <service
-            android:name=".GCMIntentService"
+            android:name=".service.GCMIntentService"
             android:enabled="true"
             android:exported="true" />
 
+        <activity android:name=".activity.EventsActivity"></activity>
     </application>
 
 </manifest>

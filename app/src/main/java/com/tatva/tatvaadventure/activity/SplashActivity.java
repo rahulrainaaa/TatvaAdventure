@@ -1,7 +1,10 @@
-package com.tatva.tatvaadventure;
+package com.tatva.tatvaadventure.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.tatva.tatvaadventure.utils.Employee;
+import com.tatva.tatvaadventure.R;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONObject;

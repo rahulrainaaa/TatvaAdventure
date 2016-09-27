@@ -1,10 +1,12 @@
-package com.tatva.tatvaadventure;
+package com.tatva.tatvaadventure.broadcastreceiver;
 
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.content.WakefulBroadcastReceiver;
+
+import com.tatva.tatvaadventure.service.GCMIntentService;
 
 public class MyBroadcastReceiver extends WakefulBroadcastReceiver {
     public MyBroadcastReceiver() {

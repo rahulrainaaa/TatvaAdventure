@@ -1,4 +1,4 @@
-package com.tatva.tatvaadventure;
+package com.tatva.tatvaadventure.utils;
 
 
 public class Constants

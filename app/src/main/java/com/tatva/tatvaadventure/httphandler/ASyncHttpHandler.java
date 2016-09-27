@@ -1,8 +1,10 @@
-package com.tatva.tatvaadventure;
+package com.tatva.tatvaadventure.httphandler;
 
 
 import android.content.Context;
 import android.os.AsyncTask;
+
+import com.tatva.tatvaadventure.utils.Constants;
 
 import org.json.JSONObject;
 
@@ -16,7 +18,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ASyncActivateDevice extends AsyncTask<String, String, String> {
+public class ASyncHttpHandler extends AsyncTask<String, String, String> {
 
     private Context context;
     private JSONObject jsonRequest;

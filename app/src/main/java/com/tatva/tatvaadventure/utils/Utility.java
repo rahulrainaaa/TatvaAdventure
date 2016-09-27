@@ -1,4 +1,4 @@
-package com.tatva.tatvaadventure;
+package com.tatva.tatvaadventure.utils;
 
 import android.app.Activity;
 import android.content.Context;

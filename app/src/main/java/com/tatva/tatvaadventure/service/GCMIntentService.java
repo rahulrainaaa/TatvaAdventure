@@ -1,4 +1,4 @@
-package com.tatva.tatvaadventure;
+package com.tatva.tatvaadventure.service;
 
 import android.app.IntentService;
 import android.app.Notification;
@@ -12,6 +12,8 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+import com.tatva.tatvaadventure.broadcastreceiver.MyBroadcastReceiver;
+import com.tatva.tatvaadventure.R;
 
 import org.apache.commons.codec.binary.Base64;
 import org.json.JSONArray;
@@ -20,7 +22,6 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import client.app.clientgcm.activity.NotificationActivity;
 
 public class GCMIntentService extends IntentService {
 

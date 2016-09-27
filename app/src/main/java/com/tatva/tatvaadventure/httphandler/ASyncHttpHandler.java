@@ -1,8 +1,9 @@
 package com.tatva.tatvaadventure.httphandler;
 
 
-import android.content.Context;
+import android.app.Activity;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.tatva.tatvaadventure.utils.Constants;
 
@@ -20,13 +21,24 @@ import java.net.URL;
 
 public class ASyncHttpHandler extends AsyncTask<String, String, String> {
 
-    private Context context;
-    private JSONObject jsonRequest;
+    private HttpCallback callback = null;
+    private Activity activity = null;
+    private JSONObject jsonRequest = null;
+    private int STATUS_CODE = -1;
+    private int tag = -1;
+    private String STATUS_MESSAGE = null;
 
+    public ASyncHttpHandler(Activity activity, HttpCallback callback, JSONObject jsonRequest, int tag)
+    {
+        this.activity = activity;
+        this.callback = callback;
+        this.jsonRequest = jsonRequest;
+        this.tag = tag;
+    }
 
     @Override
-    protected void onPreExecute() {
-
+    protected void onPreExecute()
+    {
         super.onPreExecute();
     }
 
@@ -45,16 +57,16 @@ public class ASyncHttpHandler extends AsyncTask<String, String, String> {
             //Create output stream and write data-request
             OutputStream os = urlConnection.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-            writer.write(jsonRequest.toString()); // should be fine if my getQuery is encoded right yes?
+            writer.write(jsonRequest.toString());
             writer.flush();
             writer.close();
             os.close();
 
             //Open and check the connectivity
             urlConnection.connect();
-            int statusCode = urlConnection.getResponseCode();
-            String str = urlConnection.getResponseMessage();
-            if (statusCode == 200) {
+            STATUS_CODE = urlConnection.getResponseCode();
+            STATUS_MESSAGE = urlConnection.getResponseMessage();
+            if (STATUS_CODE == 200) {
                 InputStream it = new BufferedInputStream(urlConnection.getInputStream());
                 InputStreamReader read = new InputStreamReader(it);
                 BufferedReader buff = new BufferedReader(read);
@@ -65,19 +77,65 @@ public class ASyncHttpHandler extends AsyncTask<String, String, String> {
                 }
                 return dta.toString();
             } else {
-                return "ERROR";
+                return null;
             }
 
         } catch (Exception e) {
-            return "EXCEPTION";
+            STATUS_CODE = -1;
+            STATUS_MESSAGE = "Connection Failed";
+            return null;
         }
 
     }
 
     @Override
-    protected void onPostExecute(String s) {
-
-
-        super.onPostExecute("");
+    protected void onPostExecute(String s)
+    {
+        super.onPostExecute(s);
+        if(STATUS_CODE == 200)
+        {
+            //SUCCESS
+            if(callback != null)
+            {
+                callback.onHttpSuccess(STATUS_CODE, STATUS_MESSAGE, s.toString(), tag);
+            }
+            else
+            {
+                Log.d("ASyncHttpHandler", "SUCCESS, But httpCallback is null");
+            }
+        }
+        else if(STATUS_CODE == -1)
+        {
+            //ERROR
+            if(callback != null)
+            {
+                callback.onHttpFail(STATUS_CODE, STATUS_MESSAGE, tag);
+            }
+            else
+            {
+                Log.d("ASyncHttpHandler", "FAIL, But httpCallback is null");
+            }
+        }
+        else
+        {
+            //FAILED
+            if(callback != null)
+            {
+                callback.onHttpError(tag);
+            }
+            else
+            {
+                Log.d("ASyncHttpHandler", "ERROR-EXCEPTION, But httpCallback is null");
+            }
+        }
     }
+
+    private void destroyAll()
+    {
+        callback = null;
+        activity = null;
+        jsonRequest = null;
+        STATUS_MESSAGE = null;
+    }
+
 }

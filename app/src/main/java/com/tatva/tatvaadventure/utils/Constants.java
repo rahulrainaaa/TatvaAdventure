@@ -11,3 +11,9 @@ public class Constants
     public static String REGISTER_DEVICE = "http://localhost:8080";
 
 }
+
+
+/*
+ email:- tatva1010@gmail.com
+password:- tatvapassword
+ */

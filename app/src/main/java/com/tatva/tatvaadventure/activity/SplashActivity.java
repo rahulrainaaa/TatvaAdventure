@@ -2,7 +2,10 @@ package com.tatva.tatvaadventure.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.tatva.tatvaadventure.utils.Employee;
 import com.tatva.tatvaadventure.R;
 
@@ -16,6 +19,11 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+
+        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+        Log.d("\n\n\nmainActivity","" + refreshedToken);
+        //FirebaseMessaging.getInstance().subscribeToTopic("mytopic");
+     //   Toast.makeText(this, "" + refreshedToken, Toast.LENGTH_SHORT).show();
 
         try {
             JSONObject json = new JSONObject();

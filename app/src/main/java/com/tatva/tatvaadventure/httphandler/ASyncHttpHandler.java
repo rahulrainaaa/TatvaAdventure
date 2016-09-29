@@ -5,8 +5,6 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.tatva.tatvaadventure.utils.Constants;
-
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
@@ -22,23 +20,21 @@ import java.net.URL;
 public class ASyncHttpHandler extends AsyncTask<String, String, String> {
 
     private HttpCallback callback = null;
-    private Activity activity = null;
     private JSONObject jsonRequest = null;
+    private String url = null;
     private int STATUS_CODE = -1;
     private int tag = -1;
     private String STATUS_MESSAGE = null;
 
-    public ASyncHttpHandler(Activity activity, HttpCallback callback, JSONObject jsonRequest, int tag)
-    {
-        this.activity = activity;
+    public ASyncHttpHandler(HttpCallback callback, String url, JSONObject jsonRequest, int tag) {
         this.callback = callback;
         this.jsonRequest = jsonRequest;
         this.tag = tag;
+        this.url = url;
     }
 
     @Override
-    protected void onPreExecute()
-    {
+    protected void onPreExecute() {
         super.onPreExecute();
     }
 
@@ -47,7 +43,7 @@ public class ASyncHttpHandler extends AsyncTask<String, String, String> {
 
         try {
             //Create HttpURLConnection and set request properties
-            URL url = new URL(Constants.REGISTER_DEVICE);
+            URL url = new URL(this.url);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setDoInput(true);
             urlConnection.setDoOutput(true);
@@ -85,57 +81,49 @@ public class ASyncHttpHandler extends AsyncTask<String, String, String> {
             STATUS_MESSAGE = "Connection Failed";
             return null;
         }
-
     }
 
     @Override
-    protected void onPostExecute(String s)
-    {
-        super.onPostExecute(s);
-        if(STATUS_CODE == 200)
-        {
+    protected void onPostExecute(String s) {
+
+        if (STATUS_CODE == 200) {
             //SUCCESS
-            if(callback != null)
-            {
-                callback.onHttpSuccess(STATUS_CODE, STATUS_MESSAGE, s.toString(), tag);
-            }
-            else
-            {
+            if (callback != null) {
+                callback.onHttpSuccess(STATUS_CODE, STATUS_MESSAGE, s.trim(), tag);
+            } else {
                 Log.d("ASyncHttpHandler", "SUCCESS, But httpCallback is null");
             }
-        }
-        else if(STATUS_CODE == -1)
-        {
+        } else if (STATUS_CODE == -1) {
             //ERROR
-            if(callback != null)
-            {
-                callback.onHttpFail(STATUS_CODE, STATUS_MESSAGE, tag);
-            }
-            else
-            {
+            if (callback != null) {
+                callback.onHttpError(tag);
+            } else {
                 Log.d("ASyncHttpHandler", "FAIL, But httpCallback is null");
             }
-        }
-        else
-        {
+        } else {
             //FAILED
-            if(callback != null)
-            {
-                callback.onHttpError(tag);
-            }
-            else
-            {
+            if (callback != null) {
+                callback.onHttpFail(STATUS_CODE, STATUS_MESSAGE, tag);
+            } else {
                 Log.d("ASyncHttpHandler", "ERROR-EXCEPTION, But httpCallback is null");
             }
         }
+        super.onPostExecute(s);
     }
 
-    private void destroyAll()
-    {
+    /**
+     * @method destroyAll
+     * @desc Close, Remove, null the objects
+     */
+    private void destroyAll() {
         callback = null;
-        activity = null;
         jsonRequest = null;
         STATUS_MESSAGE = null;
     }
 
+    @Override
+    protected void finalize() throws Throwable {
+        destroyAll();
+        super.finalize();
+    }
 }

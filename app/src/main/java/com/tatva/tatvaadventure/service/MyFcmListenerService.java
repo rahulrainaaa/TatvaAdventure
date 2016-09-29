@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.tatva.tatvaadventure.R;
 import com.tatva.tatvaadventure.activity.EventsActivity;
 
 import java.util.Map;
@@ -18,16 +19,15 @@ import java.util.Map;
 public class MyFcmListenerService extends FirebaseMessagingService {
 
     private NotificationManager mNotificationManager;
-    NotificationCompat.Builder builder;
 
     @Override
     public void onMessageReceived(RemoteMessage message) {
         String from = message.getFrom();
         Map data = message.getData();
 
-        Log.d("FCM MESSAGE RECEIVED", "--------------------------------------------------------------------------------------");
+        Log.d("TATVA", "New Notification Received");
 
-        sendNotification(from,"text");
+        sendNotification(from, "text");
     }
 
     private void sendNotification(String title, String msg) {
@@ -40,7 +40,7 @@ public class MyFcmListenerService extends FirebaseMessagingService {
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
                 notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         Builder mBuilder = new Builder(this)
-               // .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.mipmap.tatvaicon)
                 .setContentTitle("" + title)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
                 .setContentText(msg.toString());

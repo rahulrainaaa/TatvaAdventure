@@ -12,72 +12,57 @@ public class EventDetail {
     private String description = null;
 
     /**
-     *
      * @param id
      */
-    public void setId(int id)
-    {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public int getId()
-    {
+    public int getId() {
         return this.id;
     }
 
     /**
-     *
      * @param title
      */
-    public void setTitle(String title)
-    {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public String getTitle()
-    {
+    public String getTitle() {
         return this.title;
     }
 
     /**
-     *
      * @param place
      */
-    public void setPlace(String place)
-    {
+    public void setPlace(String place) {
         this.place = place;
     }
 
-    public String getPlace()
-    {
+    public String getPlace() {
         return this.place;
     }
 
     /**
-     *
      * @param time
      */
-    public void setTime(String time)
-    {
+    public void setTime(String time) {
         this.time = time;
     }
 
-    public String getTime()
-    {
+    public String getTime() {
         return this.time;
     }
 
     /**
-     *
      * @param description
      */
-    public void setDescription(String description)
-    {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public String getDescription()
-    {
+    public String getDescription() {
         return this.description;
     }
 

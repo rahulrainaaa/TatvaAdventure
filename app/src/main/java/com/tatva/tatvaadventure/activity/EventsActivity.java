@@ -115,7 +115,12 @@ public class EventsActivity extends AppCompatActivity implements AdapterView.OnI
     private void parseData(JSONArray array) {
         int len = array.length();
         for (int i = 0; i < len; i++) {
-            list.add("");
+            EventDetail eventDetail = new EventDetail();
+            eventDetail.setId(1);
+            eventDetail.setPlace("");
+            eventDetail.setTime("");
+            eventDetail.setTitle("");
+
         }
     }
 }

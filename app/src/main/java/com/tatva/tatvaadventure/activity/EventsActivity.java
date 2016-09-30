@@ -1,6 +1,8 @@
 package com.tatva.tatvaadventure.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -49,13 +51,14 @@ public class EventsActivity extends AppCompatActivity implements AdapterView.OnI
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        Toast.makeText(EventsActivity.this, "item click.", Toast.LENGTH_SHORT).show();
+        Constants.eventDetail = list.get(position);
+        startActivity(new Intent(this, DetailActivity.class));
     }
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-        Toast.makeText(EventsActivity.this, "item long click", Toast.LENGTH_SHORT).show();
+        Snackbar.make(view, "Event on: " + list.get(position).getTime(), Snackbar.LENGTH_SHORT).show();
         return true;
     }
 
@@ -121,6 +124,7 @@ public class EventsActivity extends AppCompatActivity implements AdapterView.OnI
                 eventDetail.setPlace(array.getJSONObject(i).getString("place"));
                 eventDetail.setTime(array.getJSONObject(i).getString("time"));
                 eventDetail.setTitle(array.getJSONObject(i).getString("title"));
+                eventDetail.setTitle(array.getJSONObject(i).getString("description"));
                 list.add(eventDetail);
             }
         }

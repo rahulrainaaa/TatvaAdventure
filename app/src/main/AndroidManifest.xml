@@ -29,7 +29,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".activity.EventsActivity" />
+        <activity android:name=".activity.EventsActivity"
+            android:label="@string/title_activity_detail"/>
         <activity
             android:name=".activity.DetailActivity"
             android:label="@string/title_activity_detail"

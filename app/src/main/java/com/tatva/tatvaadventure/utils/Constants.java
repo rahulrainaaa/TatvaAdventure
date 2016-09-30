@@ -5,6 +5,8 @@ package com.tatva.tatvaadventure.utils;
  password:- tatvapassword
  */
 
+import com.tatva.tatvaadventure.model.EventDetail;
+
 public class Constants {
     //Google GCM API information
     public static String API_KEY = "AIzaSyAMItmKtBMXH1Z-X5Fw-ZwrYfdii7gQxeU";
@@ -48,4 +50,7 @@ public class Constants {
 
     //Cache Keys
     public static String CACHE_REG = "register";
+
+    //Current Event Detail
+    public static EventDetail eventDetail = null;
 }

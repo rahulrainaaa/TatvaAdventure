@@ -3,6 +3,7 @@ package com.tatva.tatvaadventure.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.util.Linkify;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -38,6 +39,10 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
         img = (ImageView) findViewById(R.id.imgEvent);
         prgImg = (ProgressBar) findViewById(R.id.prgImg);
         prgDesc = (ProgressBar) findViewById(R.id.prgDesc);
+        txtTime.setText(eventDetail.getTime());
+        txtPlace.setText(eventDetail.getTitle());
+        txtTitle.setText(eventDetail.getTitle());
+        Linkify.addLinks(txtDesc, Linkify.WEB_URLS | Linkify.PHONE_NUMBERS);
         JSONObject jsonRequest = new JSONObject();
         try {
             jsonRequest.put("id", "" + eventDetail.getId());
@@ -49,13 +54,23 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
         if (eventDetail.getDescription() == null) {
             ASyncHttpHandler httpDesc = new ASyncHttpHandler(this, Constants.URL_GET_DESC, jsonRequest, 1);
             httpDesc.execute("");
+            Toast.makeText(DetailActivity.this, "Fetching Detail.", Toast.LENGTH_SHORT).show();
+
+        } else {
+            prgDesc.setVisibility(View.GONE);
+            txtDesc.setText(eventDetail.getDescription());
+        }
+        
+        eventDetail.loadBitmap(this);
+        if (eventDetail.getImage() == null) {
+            ASyncHttpHandler httpImage = new ASyncHttpHandler(this, Constants.URL_GET_IMG, jsonRequest, 2);
+            httpImage.execute("");
+            Toast.makeText(DetailActivity.this, "Fetching Image.", Toast.LENGTH_SHORT).show();
+        } else {
+            prgImg.setVisibility(View.GONE);
+            img.setVisibility(View.VISIBLE);
         }
 
-        if (eventDetail.getImage() == null) {
-            ASyncHttpHandler httpImage = new ASyncHttpHandler(this, Constants.URL_GET_DESC, jsonRequest, 2);
-            httpImage.execute("");
-        }
-        Toast.makeText(DetailActivity.this, "Fetching Data.", Toast.LENGTH_SHORT).show();
         findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +98,7 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
                     if (tag == 1) {
                         parseDescription(json.getJSONObject("data").getString("description"));
                     } else if (tag == 2) {
-                        parseDescription(json.getJSONObject("data").getString("image"));
+                        parseImage(json.getJSONObject("data").getString("image"));
                     }
                     break;
                 case 204:       //No data
@@ -140,10 +155,9 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
      * @desc parse encoded description and show on UI.
      */
     private void parseDescription(String data) {
-        Toast.makeText(DetailActivity.this, "Parsing Description", Toast.LENGTH_SHORT).show();
         try {
             eventDetail.setDescription(data);
-            txtDesc.setText((eventDetail.getDescription() == null)?eventDetail.getDescription():"");
+            txtDesc.setText((eventDetail.getDescription() == null) ? "" : eventDetail.getDescription());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -154,14 +168,14 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
      * @desc parse encoded image string and show on UI.
      */
     public void parseImage(String data) {
-        Toast.makeText(DetailActivity.this, "Decoding Image", Toast.LENGTH_SHORT).show();
         try {
             eventDetail.setImage(data);
-            if(eventDetail.getImage() != null)
-            {
+            if (eventDetail.getImage() != null) {
+
                 img.setImageBitmap(eventDetail.getImage());
             }
         } catch (Exception e) {
+            Toast.makeText(DetailActivity.this, "Image Decoding Fail", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }
@@ -169,7 +183,7 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
 
     @Override
     public void onBackPressed() {
-        eventDetail.setImage((String)null);
+        eventDetail.setImage((String) null);
         super.onBackPressed();
     }
 }

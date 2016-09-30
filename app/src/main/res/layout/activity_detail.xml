@@ -27,8 +27,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:id="@+id/imgEvent"
-                android:visibility="gone"
-                android:src="@mipmap/tatvaicon"/>
+                android:visibility="gone"/>
 
             <ProgressBar
                 style="@style/Widget.AppCompat.ProgressBar"

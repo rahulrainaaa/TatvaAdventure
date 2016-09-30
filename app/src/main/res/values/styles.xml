@@ -15,6 +15,9 @@
 
     <style name="CircularProgress" parent="Theme.AppCompat.Light">
         <item name="colorAccent">#3d3da6</item>
+        <item name="colorPrimary">#3d3da6</item>
+        <item name="colorPrimaryDark">#3d3da6</item>
+
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

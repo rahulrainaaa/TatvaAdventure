@@ -112,13 +112,22 @@ public class EventsActivity extends AppCompatActivity implements AdapterView.OnI
      */
     private void parseData(JSONArray array) {
         int len = array.length();
-        for (int i = 0; i < len; i++) {
-            EventDetail eventDetail = new EventDetail();
-            eventDetail.setId(1);
-            eventDetail.setPlace("");
-            eventDetail.setTime("");
-            eventDetail.setTitle("");
-
+        try
+        {
+            list.clear();
+            for (int i = 0; i < len; i++) {
+                EventDetail eventDetail = new EventDetail();
+                eventDetail.setId(array.getJSONObject(i).getInt("id"));
+                eventDetail.setPlace(array.getJSONObject(i).getString("place"));
+                eventDetail.setTime(array.getJSONObject(i).getString("time"));
+                eventDetail.setTitle(array.getJSONObject(i).getString("title"));
+                list.add(eventDetail);
+            }
         }
+        catch (Exception e)
+        {
+            Toast.makeText(EventsActivity.this, "Event array parse exception", Toast.LENGTH_SHORT).show();
+        }
+        adapter.notifyDataSetChanged();
     }
 }

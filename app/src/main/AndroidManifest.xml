@@ -10,7 +10,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,21 +18,22 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name="com.tatva.tatvaadventure.service.MyInstanceIDListenerService">
+        <service android:name=".service.MyInstanceIDListenerService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
-        <service
-            android:name="com.tatva.tatvaadventure.service.MyFcmListenerService">
+        <service android:name=".service.MyFcmListenerService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <activity android:name=".activity.EventsActivity"></activity>
+        <activity android:name=".activity.EventsActivity" />
+        <activity
+            android:name=".activity.DetailActivity"
+            android:label="@string/title_activity_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

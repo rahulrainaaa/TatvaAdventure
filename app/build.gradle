@@ -22,17 +22,18 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.2.0'
 
-    compile 'com.google.firebase:firebase-messaging:9.0.2'
 
-    compile 'org.apache.httpcomponents:httpcore:4.4.1'
-    compile 'org.apache.httpcomponents:httpclient:4.5'
-    compile 'com.google.code.gson:gson:2.4'
     compile files('libs/jackson-all-1.9.0.jar')
     compile files('libs/jackson-mapper-lgpl-1.6.0.jar')
     compile files('libs/java-json.jar')
     compile files('libs/org-apache-commons-codec.jar')
+    compile 'com.android.support:appcompat-v7:24.2.0'
+    compile 'com.google.firebase:firebase-messaging:9.0.2'
+    compile 'org.apache.httpcomponents:httpcore:4.4.1'
+    compile 'org.apache.httpcomponents:httpclient:4.5'
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.android.support:design:24.2.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

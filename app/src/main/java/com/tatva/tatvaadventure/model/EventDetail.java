@@ -1,5 +1,8 @@
 package com.tatva.tatvaadventure.model;
 
+
+import org.apache.commons.codec.binary.Base64;
+
 /**
  * Model Class for Detail Events
  */
@@ -26,7 +29,7 @@ public class EventDetail {
      * @param title
      */
     public void setTitle(String title) {
-        this.title = title;
+        this.title = new String(Base64.decodeBase64(title.getBytes()));
     }
 
     public String getTitle() {
@@ -37,7 +40,7 @@ public class EventDetail {
      * @param place
      */
     public void setPlace(String place) {
-        this.place = place;
+        this.place = new String(Base64.decodeBase64(place.getBytes()));
     }
 
     public String getPlace() {
@@ -59,7 +62,7 @@ public class EventDetail {
      * @param description
      */
     public void setDescription(String description) {
-        this.description = description;
+        this.description = new String(Base64.decodeBase64(description.getBytes()));
     }
 
     public String getDescription() {

@@ -37,6 +37,7 @@ public class EventsActivity extends AppCompatActivity implements AdapterView.OnI
         adapter = new ListAdapter(this, list);
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+        Toast.makeText(EventsActivity.this, "Fetching Events", Toast.LENGTH_SHORT).show();
         try {
             JSONObject json = new JSONObject();
             json.put("auth", Constants.AUTH_GET);

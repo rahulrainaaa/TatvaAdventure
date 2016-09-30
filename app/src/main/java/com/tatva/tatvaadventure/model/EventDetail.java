@@ -1,7 +1,13 @@
 package com.tatva.tatvaadventure.model;
 
 
-import org.apache.commons.codec.binary.Base64;
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import android.util.Base64;
 
 /**
  * Model Class for Detail Events
@@ -13,6 +19,8 @@ public class EventDetail {
     private String place = null;
     private String time = null;
     private String description = null;
+    private Bitmap image = null;
+    private String img = null;
 
     /**
      * @param id
@@ -29,7 +37,10 @@ public class EventDetail {
      * @param title
      */
     public void setTitle(String title) {
-        this.title = new String(Base64.decodeBase64(title.getBytes()));
+        if (title == null) {
+            this.title = "";
+        }
+        this.title = new String(Base64.decode(title, Base64.DEFAULT));
     }
 
     public String getTitle() {
@@ -40,7 +51,7 @@ public class EventDetail {
      * @param place
      */
     public void setPlace(String place) {
-        this.place = new String(Base64.decodeBase64(place.getBytes()));
+        this.place = new String(Base64.decode(place, Base64.DEFAULT));
     }
 
     public String getPlace() {
@@ -51,6 +62,9 @@ public class EventDetail {
      * @param time
      */
     public void setTime(String time) {
+        if (time == null) {
+            this.title = "";
+        }
         this.time = time;
     }
 
@@ -62,11 +76,46 @@ public class EventDetail {
      * @param description
      */
     public void setDescription(String description) {
-        this.description = new String(Base64.decodeBase64(description.getBytes()));
+        if (description == null) {
+            this.description = null;
+            return;
+        }
+        this.description = new String(Base64.decode(description, Base64.DEFAULT));
     }
 
     public String getDescription() {
         return this.description;
     }
 
+    /**
+     * @param image
+     * @desc Gets BASE64 and save as Bitmap
+     */
+    public void setImage(String image) {
+        this.img = image;
+        if (image == null) {
+            this.image = null;
+            return;
+        } else {
+            byte[] decodedString = Base64.decode(image, Base64.DEFAULT);
+            this.image = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        }
+    }
+
+    public void setImage(Bitmap image)
+    {
+        this.image = image;
+    }
+
+    public Bitmap getImage() {
+        return this.image;
+    }
+
+    public void saveImage(Activity activity)
+    {
+        SharedPreferences.Editor se = activity.getSharedPreferences("images", Context.MODE_PRIVATE).edit();
+        se.putString("" + id, img);
+        se.commit();
+        se = null;
+    }
 }

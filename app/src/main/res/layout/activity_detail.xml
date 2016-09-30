@@ -26,7 +26,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
+                android:id="@+id/imgEvent"
+                android:visibility="gone"
                 android:src="@mipmap/tatvaicon"/>
+
+            <ProgressBar
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:id="@+id/prgImg"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
             
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"

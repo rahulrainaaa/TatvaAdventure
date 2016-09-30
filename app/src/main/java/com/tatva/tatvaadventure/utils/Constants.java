@@ -28,6 +28,8 @@ public class Constants {
 
     public static String AUTH_GET = "AUTH_GET";
     public static String URL_GET = "http://192.168.1.90:8080/Tatva/getcontent/fetchall";
+    public static String URL_GET_DESC = "http://192.168.1.90:8080/Tatva/getcontent/getdesc";
+    public static String URL_GET_IMG = "http://192.168.1.90:8080/Tatva/getcontent/getimg";
 
     public static String AUTH_PUSH = "AUTH_PUSH";
     public static String URL_PUSH = "http://192.168.1.90:8080/Tatva/push/gcm";

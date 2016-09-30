@@ -41,7 +41,7 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
         txtTime.setText(eventDetail.getTime());
         txtPlace.setText(eventDetail.getTitle());
         txtTitle.setText(eventDetail.getTitle());
-        Linkify.addLinks(txtDesc, Linkify.WEB_URLS | Linkify.PHONE_NUMBERS);
+        Linkify.addLinks(txtDesc, Linkify.WEB_URLS | Linkify.PHONE_NUMBERS | Linkify.EMAIL_ADDRESSES | Linkify.MAP_ADDRESSES);
         JSONObject jsonRequest = new JSONObject();
         try {
             jsonRequest.put("id", "" + eventDetail.getId());
@@ -155,6 +155,7 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Linkify.addLinks(txtDesc, Linkify.WEB_URLS | Linkify.PHONE_NUMBERS | Linkify.EMAIL_ADDRESSES | Linkify.MAP_ADDRESSES);
     }
 
     /**

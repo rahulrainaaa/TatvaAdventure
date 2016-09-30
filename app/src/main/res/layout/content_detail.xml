@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:textSize="18dp"
             android:text="Title"
+            android:background="@drawable/shape_highlight_grad"
             android:layout_marginTop="5dp"
             android:gravity="left"
             android:textColor="#c0504e" />
@@ -44,7 +45,8 @@
             android:layout_height="wrap_content"
             android:textSize="18dp"
             android:text="Place"
-            android:layout_marginTop="12dp"
+            android:background="@drawable/shape_highlight_grad"
+            android:layout_marginTop="15dp"
             android:gravity="left"
             android:textColor="#c0504e" />
 
@@ -62,7 +64,8 @@
             android:layout_height="wrap_content"
             android:textSize="18dp"
             android:text="Date"
-            android:layout_marginTop="5dp"
+            android:background="@drawable/shape_highlight_grad"
+            android:layout_marginTop="15dp"
             android:gravity="left"
             android:textColor="#c0504e" />
 
@@ -80,7 +83,8 @@
             android:layout_height="wrap_content"
             android:textSize="18dp"
             android:text="Description"
-            android:layout_marginTop="12dp"
+            android:background="@drawable/shape_highlight_grad"
+            android:layout_marginTop="15dp"
             android:gravity="left"
             android:textColor="#c0504e" />
 

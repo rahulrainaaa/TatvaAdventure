@@ -23,7 +23,7 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
     TextView txtTitle, txtPlace, txtTime, txtDesc;
     ImageView img;
     EventDetail eventDetail;
-    ProgressBar prgImg, prgDesc;
+    ProgressBar prgDesc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,6 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
         txtTime = (TextView) findViewById(R.id.txtDate);
         txtDesc = (TextView) findViewById(R.id.txtDescription);
         img = (ImageView) findViewById(R.id.imgEvent);
-        prgImg = (ProgressBar) findViewById(R.id.prgImg);
         prgDesc = (ProgressBar) findViewById(R.id.prgDesc);
         txtTime.setText(eventDetail.getTime());
         txtPlace.setText(eventDetail.getTitle());
@@ -54,20 +53,17 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
         if (eventDetail.getDescription() == null) {
             ASyncHttpHandler httpDesc = new ASyncHttpHandler(this, Constants.URL_GET_DESC, jsonRequest, 1);
             httpDesc.execute("");
-            Toast.makeText(DetailActivity.this, "Fetching Detail.", Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(DetailActivity.this, "Fetching Description", Toast.LENGTH_SHORT).show();
         } else {
             prgDesc.setVisibility(View.GONE);
             txtDesc.setText(eventDetail.getDescription());
         }
-        
-        eventDetail.loadBitmap(this);
+
         if (eventDetail.getImage() == null) {
             ASyncHttpHandler httpImage = new ASyncHttpHandler(this, Constants.URL_GET_IMG, jsonRequest, 2);
             httpImage.execute("");
             Toast.makeText(DetailActivity.this, "Fetching Image.", Toast.LENGTH_SHORT).show();
         } else {
-            prgImg.setVisibility(View.GONE);
             img.setVisibility(View.VISIBLE);
         }
 
@@ -85,7 +81,6 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
         if (tag == 1) {
             prgDesc.setVisibility(View.GONE);
         } else if (tag == 2) {
-            prgImg.setVisibility(View.GONE);
             img.setVisibility(View.VISIBLE);
         }
         try {
@@ -134,7 +129,6 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
             prgDesc.setVisibility(View.GONE);
         } else if (tag == 2) {
             Toast.makeText(DetailActivity.this, "Unable to fetch Image", Toast.LENGTH_SHORT).show();
-            prgImg.setVisibility(View.GONE);
             img.setVisibility(View.VISIBLE);
         }
     }
@@ -145,7 +139,7 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
             eventDetail.setDescription(null);
             prgDesc.setVisibility(View.GONE);
         } else if (tag == 2) {
-            prgImg.setVisibility(View.GONE);
+            eventDetail.setImage((String)null);
             img.setVisibility(View.VISIBLE);
         }
     }
@@ -179,8 +173,7 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
             e.printStackTrace();
         }
     }
-
-
+    
     @Override
     public void onBackPressed() {
         eventDetail.setImage((String) null);

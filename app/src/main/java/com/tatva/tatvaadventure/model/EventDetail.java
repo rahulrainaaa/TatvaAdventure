@@ -112,7 +112,6 @@ public class EventDetail {
         SharedPreferences.Editor se = activity.getSharedPreferences("images", Context.MODE_PRIVATE).edit();
         se.putString("" + id, img);
         se.commit();
-        se = null;
     }
 
     public void loadBitmap(Activity activity) {
@@ -120,6 +119,7 @@ public class EventDetail {
         this.img = s.getString("" + id, "");
         if (this.img.isEmpty()) {
             this.img = null;
+            this.image = null;
         } else {
             setImage(this.img);
         }

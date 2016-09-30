@@ -159,7 +159,7 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
             eventDetail.setImage(data);
             if(eventDetail.getImage() != null)
             {
-
+                img.setImageBitmap(eventDetail.getImage());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -167,4 +167,9 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        eventDetail.setImage((String)null);
+        super.onBackPressed();
+    }
 }

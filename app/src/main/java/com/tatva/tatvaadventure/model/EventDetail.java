@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-
 import android.util.Base64;
 
 /**
@@ -89,7 +88,6 @@ public class EventDetail {
 
     /**
      * @param image
-     * @desc Gets BASE64 and save as Bitmap
      */
     public void setImage(String image) {
         this.img = image;
@@ -102,8 +100,7 @@ public class EventDetail {
         }
     }
 
-    public void setImage(Bitmap image)
-    {
+    public void setImage(Bitmap image) {
         this.image = image;
     }
 
@@ -111,11 +108,20 @@ public class EventDetail {
         return this.image;
     }
 
-    public void saveImage(Activity activity)
-    {
+    public void saveImage(Activity activity) {
         SharedPreferences.Editor se = activity.getSharedPreferences("images", Context.MODE_PRIVATE).edit();
         se.putString("" + id, img);
         se.commit();
         se = null;
+    }
+
+    public void loadBitmap(Activity activity) {
+        SharedPreferences s = activity.getSharedPreferences("images", Context.MODE_PRIVATE);
+        this.img = s.getString("" + id, "");
+        if (this.img.isEmpty()) {
+            this.img = null;
+        } else {
+            setImage(this.img);
+        }
     }
 }

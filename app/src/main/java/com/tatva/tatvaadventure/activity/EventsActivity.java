@@ -124,7 +124,7 @@ public class EventsActivity extends AppCompatActivity implements AdapterView.OnI
                 eventDetail.setPlace(array.getJSONObject(i).getString("place"));
                 eventDetail.setTime(array.getJSONObject(i).getString("time"));
                 eventDetail.setTitle(array.getJSONObject(i).getString("title"));
-                eventDetail.setTitle(array.getJSONObject(i).getString("description"));
+                //eventDetail.setTitle(array.getJSONObject(i).getString("description"));
                 list.add(eventDetail);
             }
         }

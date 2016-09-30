@@ -4,14 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.tatva.tatvaadventure.activity.DetailActivity"
     tools:showIn="@layout/activity_detail">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
+        android:textSize="18dp"
+        android:text="Title"
+        android:layout_marginTop="5dp"
+        android:gravity="right"
+        android:id="@+id/txtTitle"
+        android:textColor="#c0504e" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="Some Title Text For Event"
+        android:layout_marginTop="3dp"
+        android:id="@+id/txtPlace"
+        android:textColor="#333333" />
 
 </android.support.v4.widget.NestedScrollView>

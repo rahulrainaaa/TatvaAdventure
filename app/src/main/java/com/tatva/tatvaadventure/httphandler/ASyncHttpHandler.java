@@ -1,7 +1,6 @@
 package com.tatva.tatvaadventure.httphandler;
 
 
-import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
 

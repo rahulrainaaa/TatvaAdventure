@@ -5,8 +5,7 @@ package com.tatva.tatvaadventure.utils;
  password:- tatvapassword
  */
 
-public class Constants
-{
+public class Constants {
     //Google GCM API information
     public static String API_KEY = "AIzaSyAMItmKtBMXH1Z-X5Fw-ZwrYfdii7gQxeU";
 
@@ -32,20 +31,20 @@ public class Constants
     public static String URL_PUSH = "http://192.168.1.90:8080/Tatva/push/gcm";
 
     //HTTP Response Code
-    public static String S_OK_200 = "OK";				//success
-    public static String S_BR_400 = "BAD REQUEST";		//Unmatched request packet
-    public static String S_UA_401 = "UNAUTHORIZED";		//Invalid auth-key
-    public static String S_F_403 = "FORBIDDEN";			//Exception: http-client-connection
+    public static String S_OK_200 = "OK";                //success
+    public static String S_BR_400 = "BAD REQUEST";        //Unmatched request packet
+    public static String S_UA_401 = "UNAUTHORIZED";        //Invalid auth-key
+    public static String S_F_403 = "FORBIDDEN";            //Exception: http-client-connection
     public static String S_NF_404 = "NOT FOUND";
-    public static String S_NA_406 = "NOT ACCEPTABLE";	//duplicate-details
+    public static String S_NA_406 = "NOT ACCEPTABLE";    //duplicate-details
     public static String S_TO_504 = "TIMEOUT";
     public static String S_C_409 = "CONFLICT";
-    public static String S_ISE_500 = "INTERNAL SERVER ERROR";	//Exception, Connection-error(jdbc)
+    public static String S_ISE_500 = "INTERNAL SERVER ERROR";    //Exception, Connection-error(jdbc)
 
     //Custom Response Code
-    public static String C_JPE_71 = "JSON Packing Exception";	//JSONException(packing)
-    public static String C_JRE_72 = "JSON Packing Exception";	//JSONException (parsing)
-    public static String C_UHE_73 = "Server Connection Failed";	//3rd party server connection fail (gcm-http).
+    public static String C_JPE_71 = "JSON Packing Exception";    //JSONException(packing)
+    public static String C_JRE_72 = "JSON Packing Exception";    //JSONException (parsing)
+    public static String C_UHE_73 = "Server Connection Failed";    //3rd party server connection fail (gcm-http).
 
     //Cache Keys
     public static String CACHE_REG = "register";

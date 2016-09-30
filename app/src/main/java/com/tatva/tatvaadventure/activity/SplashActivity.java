@@ -6,13 +6,12 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.tatva.tatvaadventure.R;
 import com.tatva.tatvaadventure.httphandler.ASyncHttpHandler;
 import com.tatva.tatvaadventure.httphandler.HttpCallback;
 import com.tatva.tatvaadventure.utils.CacheHandler;
 import com.tatva.tatvaadventure.utils.Constants;
-import com.tatva.tatvaadventure.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;

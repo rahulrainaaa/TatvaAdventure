@@ -1,7 +1,7 @@
 package com.tatva.tatvaadventure.httphandler;
 
 /**
- * Created by PriyankaS on 9/27/2016.
+ * HTTPCallback interface
  */
 public interface HttpCallback {
 

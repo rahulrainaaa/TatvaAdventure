@@ -18,12 +18,11 @@ public class ListAdapter extends ArrayAdapter<EventDetail> {
     Activity activity = null;
     LayoutInflater inflater = null;
 
-    static class ViewHolder
-    {
+    static class ViewHolder {
         public TextView txtDate;
         public TextView txtTitle;
         public TextView txtPlace;
-     }
+    }
 
     public ListAdapter(Activity activity, ArrayList<EventDetail> list) {
         super(activity, R.layout.item_list_events, list);
@@ -37,26 +36,23 @@ public class ListAdapter extends ArrayAdapter<EventDetail> {
 
         View view = convertView;
         ViewHolder viewHolder;
-        if (view == null)
-        {
+        if (view == null) {
             view = inflater.inflate(R.layout.item_list_events, null);
             viewHolder = new ViewHolder();
-            viewHolder.txtDate = (TextView)view.findViewById(R.id.txtDate);
-            viewHolder.txtTitle = (TextView)view.findViewById(R.id.txtTitle);
-            viewHolder.txtPlace = (TextView)view.findViewById(R.id.txtPlace);
+            viewHolder.txtDate = (TextView) view.findViewById(R.id.txtDate);
+            viewHolder.txtTitle = (TextView) view.findViewById(R.id.txtTitle);
+            viewHolder.txtPlace = (TextView) view.findViewById(R.id.txtPlace);
             view.setTag(viewHolder);
-        }
-        else
-        {
-            viewHolder = (ViewHolder)view.getTag();
+        } else {
+            viewHolder = (ViewHolder) view.getTag();
         }
         TextView txtDate = viewHolder.txtDate;
         TextView txtTitle = viewHolder.txtTitle;
         TextView txtPlace = viewHolder.txtPlace;
 
-        txtDate.setText("date " + position);
-        txtTitle.setText("Title " + position);
-        txtPlace.setText("Place " + position);
+        txtDate.setText(list.get(position).getTime());
+        txtTitle.setText(list.get(position).getTitle());
+        txtPlace.setText(list.get(position).getPlace());
 
         return view;
     }

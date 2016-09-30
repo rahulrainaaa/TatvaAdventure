@@ -1,10 +1,9 @@
 package com.tatva.tatvaadventure.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -13,7 +12,6 @@ import com.tatva.tatvaadventure.adapter.ListAdapter;
 import com.tatva.tatvaadventure.httphandler.ASyncHttpHandler;
 import com.tatva.tatvaadventure.httphandler.HttpCallback;
 import com.tatva.tatvaadventure.model.EventDetail;
-import com.tatva.tatvaadventure.utils.CacheHandler;
 import com.tatva.tatvaadventure.utils.Constants;
 
 import org.json.JSONArray;

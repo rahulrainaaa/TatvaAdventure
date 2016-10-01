@@ -13,7 +13,7 @@
         android:layout_centerInParent="true"
         android:scaleType="fitCenter"
         android:id="@+id/img"
-        android:visibility="visible"
+        android:visibility="gone"
         android:src="@mipmap/nointernet"/>
 
     <ProgressBar

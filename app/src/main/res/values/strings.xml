@@ -2,6 +2,7 @@
     <string name="app_name">Tatva Adventure</string>
     <string name="title_activity_detail">Event</string>
     <string name="title_activity_events">Tatva Events</string>
+    <string name="title_activity_push">Notification</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

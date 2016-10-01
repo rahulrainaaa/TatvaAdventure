@@ -38,6 +38,7 @@ public class EventDetail {
     public void setTitle(String title) {
         if (title == null) {
             this.title = "";
+            return;
         }
         this.title = new String(Base64.decode(title, Base64.DEFAULT));
     }
@@ -50,6 +51,11 @@ public class EventDetail {
      * @param place
      */
     public void setPlace(String place) {
+        if(place == null)
+        {
+            this.place = "";
+            return;
+        }
         this.place = new String(Base64.decode(place, Base64.DEFAULT));
     }
 

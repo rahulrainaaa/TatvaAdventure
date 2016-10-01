@@ -39,7 +39,7 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
         img = (ImageView) findViewById(R.id.imgEvent);
         prgDesc = (ProgressBar) findViewById(R.id.prgDesc);
         txtTime.setText(eventDetail.getTime());
-        txtPlace.setText(eventDetail.getTitle());
+        txtPlace.setText(eventDetail.getPlace());
         txtTitle.setText(eventDetail.getTitle());
         Linkify.addLinks(txtDesc, Linkify.WEB_URLS | Linkify.PHONE_NUMBERS | Linkify.EMAIL_ADDRESSES | Linkify.MAP_ADDRESSES);
         JSONObject jsonRequest = new JSONObject();

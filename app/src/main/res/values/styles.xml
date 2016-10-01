@@ -13,7 +13,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="CircularProgress" parent="Theme.AppCompat.Light">
+    <style name="Theme3" parent="Theme.AppCompat.Light">
         <item name="colorAccent">#3d3da6</item>
         <item name="colorPrimary">#3d3da6</item>
         <item name="colorPrimaryDark">#3d3da6</item>

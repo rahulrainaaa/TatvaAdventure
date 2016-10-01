@@ -13,6 +13,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.tatva.tatvaadventure.R;
 import com.tatva.tatvaadventure.activity.EventsActivity;
+import com.tatva.tatvaadventure.activity.PushActivity;
 
 import java.util.Map;
 
@@ -34,7 +35,7 @@ public class MyFcmListenerService extends FirebaseMessagingService {
 
         mNotificationManager = (NotificationManager) this
                 .getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent notificationIntent = new Intent(this, EventsActivity.class);
+        Intent notificationIntent = new Intent(this, PushActivity.class);
         notificationIntent.putExtra("NotificationIntent", true);
         notificationIntent.setFlags(Notification.FLAG_AUTO_CANCEL);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,

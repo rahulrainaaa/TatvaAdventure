@@ -22,7 +22,7 @@ public class SplashActivity extends AppCompatActivity implements HttpCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
+        findViewById(R.id.idd).setSelected(true);
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
         if (refreshedToken == null) {   //No GCM ID
 

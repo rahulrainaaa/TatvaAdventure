@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
+    android:layout_margin="2dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_detail">
 
@@ -14,87 +14,117 @@
         android:orientation="vertical">
 
         <ProgressBar
-            style="@style/CircularProgress"
             android:id="@+id/prgDesc"
+            style="@style/Theme3"
             android:layout_width="match_parent"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shape_border"
+            android:gravity="left"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:text="Title"
-            android:background="@drawable/shape_highlight_grad"
-            android:layout_marginTop="5dp"
-            android:gravity="left"
-            android:textColor="#c0504e" />
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="18dp" />
+
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="17dp"
-            android:text="-"
-            android:layout_marginTop="3dp"
             android:id="@+id/txtTitle"
-            android:textColor="#333333" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textColor="@color/colorSecondaryText"
+            android:background="@drawable/shape_box"
+            android:textSize="17dp" />
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/shape_border"
+            android:gravity="left"
             android:text="Place"
-            android:background="@drawable/shape_highlight_grad"
-            android:layout_marginTop="15dp"
-            android:gravity="left"
-            android:textColor="#c0504e" />
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="18dp" />
+
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="17dp"
-            android:text="-"
-            android:layout_marginTop="3dp"
             android:id="@+id/txtPlace"
-            android:textColor="#333333" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textColor="@color/colorSecondaryText"
+            android:background="@drawable/shape_box"
+            android:textSize="17dp" />
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/shape_border"
+            android:gravity="left"
             android:text="Date"
-            android:background="@drawable/shape_highlight_grad"
-            android:layout_marginTop="15dp"
-            android:gravity="left"
-            android:textColor="#c0504e" />
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="18dp" />
+
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="17dp"
-            android:text="-"
-            android:layout_marginTop="12dp"
             android:id="@+id/txtDate"
-            android:textColor="#333333" />
-
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:text="Description"
-            android:background="@drawable/shape_highlight_grad"
-            android:layout_marginTop="15dp"
-            android:gravity="left"
-            android:textColor="#c0504e" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="17dp"
             android:text="-"
-            android:layout_marginTop="3dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textColor="@color/colorSecondaryText"
+            android:background="@drawable/shape_box"
+            android:textSize="17dp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/shape_border"
+            android:gravity="left"
+            android:text="Description"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="18dp" />
+
+
+        <TextView
             android:id="@+id/txtDescription"
-            android:textColor="#333333" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:textColor="@color/colorSecondaryText"
+            android:background="@drawable/shape_box"
+            android:textSize="17dp" />
+
 
     </LinearLayout>
 

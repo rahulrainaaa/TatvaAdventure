@@ -55,4 +55,5 @@ public class Constants {
 
     //Current Event Detail
     public static EventDetail eventDetail = null;
+    public static EventDetail pushDetail = null;
 }

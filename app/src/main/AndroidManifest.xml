@@ -6,10 +6,11 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/tatvaicon"
+        android:icon="@mipmap/ticon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".activity.SplashActivity"
             android:screenOrientation="portrait">
@@ -25,6 +26,7 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
         <service android:name=".service.MyFcmListenerService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -35,12 +37,19 @@
             android:name=".activity.EventsActivity"
             android:label="@string/title_activity_detail"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activity.DetailActivity"
             android:label="@string/title_activity_detail"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.PushActivity"></activity>
+
+        <activity android:name=".activity.PushActivity"
+            android:label="@string/title_activity_push"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+
     </application>
 
 </manifest>

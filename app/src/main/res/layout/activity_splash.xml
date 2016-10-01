@@ -10,11 +10,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:lines="1"
         android:id="@+id/idd"
+        android:gravity="center"
         android:textSize="35dp"
-        android:ellipsize="marquee"
-        android:fadingEdge="horizontal"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:text="Splash Screen"        />
+        android:text="Tatva\nAdventures"        />
 </RelativeLayout>

@@ -16,6 +16,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Splash" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color_grad_splash_start</item>
+        <item name="colorPrimaryDark">@color/color_grad_splash_start</item>
+        <item name="colorAccent">@color/color_grad_splash_start</item>
+    </style>
+
+    <style name="Splash.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="Theme3" parent="Theme.AppCompat.Light">
         <item name="colorAccent">#3d3da6</item>
         <item name="colorPrimary">#3d3da6</item>

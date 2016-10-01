@@ -1,6 +1,5 @@
 package com.tatva.tatvaadventure.activity;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -39,12 +38,13 @@ public class PushActivity extends AppCompatActivity implements HttpCallback {
         txtDesc = (TextView) findViewById(R.id.txtDescription);
         img = (ImageView) findViewById(R.id.imgEvent);
         prgDesc = (ProgressBar) findViewById(R.id.prgDesc);
-        txtTime.setText(eventDetail.getTime());
-        txtPlace.setText(eventDetail.getPlace());
-        txtTitle.setText(eventDetail.getTitle());
-        Linkify.addLinks(txtDesc, Linkify.WEB_URLS | Linkify.PHONE_NUMBERS | Linkify.EMAIL_ADDRESSES | Linkify.MAP_ADDRESSES);
+
         JSONObject jsonRequest = new JSONObject();
         try {
+            txtTime.setText(eventDetail.getTime());
+            txtPlace.setText(eventDetail.getPlace());
+            txtTitle.setText(eventDetail.getTitle());
+            Linkify.addLinks(txtDesc, Linkify.WEB_URLS | Linkify.PHONE_NUMBERS | Linkify.EMAIL_ADDRESSES | Linkify.MAP_ADDRESSES);
             jsonRequest.put("id", "" + eventDetail.getId());
             jsonRequest.put("auth", Constants.AUTH_GET);
         } catch (Exception e) {
@@ -177,8 +177,6 @@ public class PushActivity extends AppCompatActivity implements HttpCallback {
 
     @Override
     protected void onPause() {
-        eventDetail.setImage((Bitmap) null);
-        eventDetail.setImage((String) null);
         eventDetail = null;
         Constants.pushDetail = null;
         super.onPause();

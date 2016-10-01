@@ -12,8 +12,9 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.tatva.tatvaadventure.R;
-import com.tatva.tatvaadventure.activity.EventsActivity;
 import com.tatva.tatvaadventure.activity.PushActivity;
+import com.tatva.tatvaadventure.model.EventDetail;
+import com.tatva.tatvaadventure.utils.Constants;
 
 import java.util.Map;
 
@@ -23,12 +24,21 @@ public class MyFcmListenerService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage message) {
-        String from = message.getFrom();
-        Map data = message.getData();
 
         Log.d("TATVA", "New Notification Received");
-
-        sendNotification(from, "text");
+        String from = message.getFrom();
+        Map data = message.getData();
+        String title = (String) data.get("title");
+        Integer id = Integer.parseInt((String) data.get("id"));
+        String place = (String) data.get("place");
+        String time = (String) data.get("time");
+        EventDetail eventDetail = new EventDetail();
+        eventDetail.setId(id);
+        eventDetail.setTitle(title.trim());
+        eventDetail.setPlace(place);
+        eventDetail.setTime(time);
+        Constants.pushDetail = eventDetail;
+        sendNotification("Tatva Adventure", eventDetail.getTitle() + "  On  " + eventDetail.getTime().trim());
     }
 
     private void sendNotification(String title, String msg) {
@@ -41,7 +51,7 @@ public class MyFcmListenerService extends FirebaseMessagingService {
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
                 notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         Builder mBuilder = new Builder(this)
-                .setSmallIcon(R.mipmap.tatvaicon)
+                .setSmallIcon(R.mipmap.push)
                 .setContentTitle("" + title)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
                 .setContentText(msg.toString());

@@ -53,7 +53,6 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
         if (eventDetail.getDescription() == null) {
             ASyncHttpHandler httpDesc = new ASyncHttpHandler(this, Constants.URL_GET_DESC, jsonRequest, 1);
             httpDesc.execute("");
-            Toast.makeText(DetailActivity.this, "Fetching Description", Toast.LENGTH_SHORT).show();
         } else {
             prgDesc.setVisibility(View.GONE);
             txtDesc.setText(eventDetail.getDescription());
@@ -62,7 +61,6 @@ public class DetailActivity extends AppCompatActivity implements HttpCallback {
         if (eventDetail.getImage() == null) {
             ASyncHttpHandler httpImage = new ASyncHttpHandler(this, Constants.URL_GET_IMG, jsonRequest, 2);
             httpImage.execute("");
-            Toast.makeText(DetailActivity.this, "Fetching Image.", Toast.LENGTH_SHORT).show();
         } else {
             img.setVisibility(View.VISIBLE);
         }

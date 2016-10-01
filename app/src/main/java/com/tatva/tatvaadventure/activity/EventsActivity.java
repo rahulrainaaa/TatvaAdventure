@@ -38,8 +38,8 @@ public class EventsActivity extends AppCompatActivity implements AdapterView.OnI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
         listView = (ListView) findViewById(R.id.listView);
-        img = (ImageView)findViewById(R.id.img);
-        progress = (ProgressBar)findViewById(R.id.process);
+        img = (ImageView) findViewById(R.id.img);
+        progress = (ProgressBar) findViewById(R.id.process);
         listView.setOnItemClickListener(this);
         listView.setOnItemLongClickListener(this);
         adapter = new ListAdapter(this, list);
@@ -62,7 +62,7 @@ public class EventsActivity extends AppCompatActivity implements AdapterView.OnI
         return true;
     }
 
-                @Override
+    @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         Constants.eventDetail = list.get(position);
@@ -132,8 +132,7 @@ public class EventsActivity extends AppCompatActivity implements AdapterView.OnI
      * @method refreshList
      * @desc Method to Call Web-service for list
      */
-    private void refreshList()
-    {
+    private void refreshList() {
         progress.setVisibility(View.VISIBLE);
         img.setVisibility(View.GONE);
         try {
@@ -152,8 +151,7 @@ public class EventsActivity extends AppCompatActivity implements AdapterView.OnI
      */
     private void parseData(JSONArray array) {
         int len = array.length();
-        try
-        {
+        try {
             list.clear();
             for (int i = 0; i < len; i++) {
                 EventDetail eventDetail = new EventDetail();
@@ -164,9 +162,7 @@ public class EventsActivity extends AppCompatActivity implements AdapterView.OnI
                 //eventDetail.setTitle(array.getJSONObject(i).getString("description"));
                 list.add(eventDetail);
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             Toast.makeText(EventsActivity.this, "Event array parse exception", Toast.LENGTH_SHORT).show();
         }
         adapter.notifyDataSetChanged();

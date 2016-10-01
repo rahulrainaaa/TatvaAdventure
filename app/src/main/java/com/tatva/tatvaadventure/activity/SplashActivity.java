@@ -25,7 +25,14 @@ public class SplashActivity extends AppCompatActivity implements HttpCallback {
         findViewById(R.id.idd).setSelected(true);
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
         if (refreshedToken == null) {   //No GCM ID
-
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    SplashActivity.this.startActivity(new Intent(SplashActivity.this, EventsActivity.class));
+                    SplashActivity.this.finish();
+                }
+            }, 1200);
         } else if (CacheHandler.getInstance().getCache(this, Constants.CACHE_REG, 0) == 0) { //Not registered
             JSONObject jsonRequest = new JSONObject();
 
@@ -62,6 +69,8 @@ public class SplashActivity extends AppCompatActivity implements HttpCallback {
                 case 200:       // OK
                     CacheHandler.getInstance().setCache(this, Constants.CACHE_REG, 1);
                     Toast.makeText(SplashActivity.this, "Device Registered Successful", Toast.LENGTH_SHORT).show();
+                    SplashActivity.this.startActivity(new Intent(SplashActivity.this, EventsActivity.class));
+                    SplashActivity.this.finish();
                     break;
                 case 401:       // Auth Fail
                     Toast.makeText(SplashActivity.this, code + ": " + msg, Toast.LENGTH_SHORT).show();
@@ -95,6 +104,5 @@ public class SplashActivity extends AppCompatActivity implements HttpCallback {
 
     @Override
     public void onHttpError(int tag) {
-        Toast.makeText(SplashActivity.this, "Fail Server Connection", Toast.LENGTH_SHORT).show();
     }
 }

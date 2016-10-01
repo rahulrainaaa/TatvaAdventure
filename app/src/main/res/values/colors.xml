@@ -8,4 +8,9 @@
     <color name="colorSecondaryText">#757575</color>
     <color name="colorIcons">#FFFFFF</color>
     <color name="colorDivider">#BDBDBD</color>
+
+    <color name="color_grad_splash_start">#00695C</color>
+    <color name="color_grad_splash_center">#00897B</color>
+    <color name="color_grad_splash_end">#00897B</color>
+    <color name="holo_purple">#00695c</color>
 </resources>
